@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Unit1_ass
+public class Quiz
 {
 	public static void main(String[] args)
 	{
