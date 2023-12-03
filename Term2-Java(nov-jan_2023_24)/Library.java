@@ -33,6 +33,7 @@ public class Library
                         break;
                     case "exit":
                         exit = true;
+                        scan.close();
                         System.out.println("\nExiting...");
                         break;
                     default:
