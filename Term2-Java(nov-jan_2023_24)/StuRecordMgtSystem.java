@@ -15,11 +15,11 @@ public class StuRecordMgtSystem {
         //creating an infinte loop
         while (!exit) {
 
-            System.out.println("\nWELCOME!!! Administrator");
+            System.out.println("\nWELCOME!!! Administrator, what option?");
             System.out.println("new - To add new student.");
             System.out.println("upd - To update student.");
             System.out.println("view - To student details.");
-            System.out.println("ext - To exit.\n");
+            System.out.println("ext - To exit.");
 
             String option = scan.nextLine();
             switch (option) {
@@ -135,7 +135,7 @@ class StudentManagement {
                 
                 while(!exit){
                     // find what is to be updated
-                    System.out.println("Enter 1 - to update ID");
+                    System.out.println("\nEnter 1 - to update ID");
                     System.out.println("Enter 2 - to update name");
                     System.out.println("Enter 3 - to update age");
                     System.out.println("Enter 4 - to update grade");
@@ -146,25 +146,25 @@ class StudentManagement {
                     switch(option){
                         case 1:
                             // update the id
-                            System.out.print("Update student ID: ");
+                            System.out.print("\nUpdate student ID: ");
                             int up_id = scan.nextInt();
                             updateID(exist, up_id);
                             break;
                         case 2:
                             // update the name
-                            System.out.print("Update student name: ");
+                            System.out.print("\nUpdate student name: ");
                             String name = scan.nextLine();
                             exist.setName(name);
                             break;
                         case 3:
                             // set the age
-                            System.out.print("Student age: ");
+                            System.out.print("\nStudent age: ");
                             int up_age = scan.nextInt();
                             updateAge(exist, up_age);
                             break;
                         case 4:
                             // set the grade
-                            System.out.print("Student grade: ");
+                            System.out.print("\nStudent grade: ");
                             float up_grade = scan.nextFloat();
                             updateGrade(exist, up_grade);
                             break;
@@ -176,7 +176,7 @@ class StudentManagement {
                             System.out.println("NOT AN OPTION");
                             break;
                     }
-                    System.out.println("Students' details successfully updated");
+                    System.out.println("\nStudents' details successfully updated");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error:Wrong input type");
@@ -235,7 +235,7 @@ class StudentManagement {
             
         while(!ext){
             // find what is to be updated
-            System.out.println("Enter 1 - to view a student record");
+            System.out.println("\nEnter 1 - to view a student record");
             System.out.println("Enter all - to view the entire list");
             System.out.println("Enter 0 - exit from VIEW\n");
             String option = scan.nextLine();
@@ -258,7 +258,7 @@ class StudentManagement {
                         // list body
                         System.out.printf("%-15d%-15s%-15d%-15.2f\n", exist.returnId(), exist.returnName(), exist.returnAge(), exist.returnGrade()); 
                     }else{
-                        System.out.println("Student with ID " + ID + " does not exist");
+                        System.out.println("Student with ID " + ID + " does not exist\n");
                     }                     
                     break;
                 case "all":
