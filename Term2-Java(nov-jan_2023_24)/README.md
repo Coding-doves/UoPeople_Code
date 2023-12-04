@@ -67,8 +67,7 @@ ext - To exit.
     Enter 4 - to update grade
     Enter 0 - Back to menu   
     ```
-![upadating menu](image.png)
-
+    
 3. **View Student Details:**
     - Enter the option `view`.
     - Choose from the options the view.
