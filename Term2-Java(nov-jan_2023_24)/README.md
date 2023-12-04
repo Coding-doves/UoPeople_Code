@@ -67,7 +67,7 @@ ext - To exit.
     Enter 4 - to update grade
     Enter 0 - Back to menu   
     ```
-    
+
 3. **View Student Details:**
     - Enter the option `view`.
     - Choose from the options the view.
@@ -128,6 +128,8 @@ new - To add new student.
 upd - To update student.
 view - To student details.
 ext - To exit.
+
+upd
 
 UPDATING STUDENTS' INFORMATION
 ID of the student you want to update: 5678
