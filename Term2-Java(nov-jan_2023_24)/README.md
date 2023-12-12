@@ -2,9 +2,13 @@
 # Quiz
 ### Documentation
 provide soon...
+
+============================================================
+
 # Library system
 ### Documentation
 provide soon...
+============================================================
 
 # Student record management system
 ### Documentation
@@ -158,3 +162,15 @@ upd - To update student.
 view - To student details.
 ext - To exit.
 ```
+
+============================================================
+# Data Analysis (Stock Price)
+Stock price of a company are hard coded in an array name “stockPrice” and in an ArrayList named  “stockPriceList”.  It respresent 10 days of stock sales.
+
+With the method “calculateAveragePrice” the average to the all 10 stock price is returned to the main method. To calculate the average, I divide summed-up all stock price and divided by 10.
+
+With the method “findMaximumPrice”, I loop through the “stockPrice” array in search of the maximum price. In each iteration, the stockPrice is compared with the present max value stored the “maxPrice” variable and replace with a greater price and is returned at the end of the loop.
+
+With the method “countOccurrences” the number of times a price occurs in the array is returned. For each time the value searched for is seen, the counter (named occur) increases by one.
+
+With the method “computeCumulativeSum” cumulates the sum and stores them in a new ArrayList and retuned to the main method. 
