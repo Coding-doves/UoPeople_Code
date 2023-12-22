@@ -174,3 +174,11 @@ With the method “findMaximumPrice”, I loop through the “stockPrice” arra
 With the method “countOccurrences” the number of times a price occurs in the array is returned. For each time the value searched for is seen, the counter (named occur) increases by one.
 
 With the method “computeCumulativeSum” cumulates the sum and stores them in a new ArrayList and retuned to the main method. 
+
+
+========================================================
+# Course Enrollment and Grade Management System
+
+============================================================
+# CarRentals
+See project folder for details
