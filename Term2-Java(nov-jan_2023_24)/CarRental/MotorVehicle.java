@@ -6,8 +6,9 @@ package CarRental;
  * numbersOfWheels():  retrieving the number of wheels
  * motorcycleType(): sport, cruiser, or off-road
  */
-public interface MotorVehicle {
-    void settings();
-    void numbersOfWheels();
-    void motorcycleType();
+public interface MotorVehicle extends Vehicle{
+    void setNumbersOfWheels(int wheels);
+    void setMotorcycleType(String type);
+    int getNumbersOfWheels();
+    String getMotorcycleType();
 }

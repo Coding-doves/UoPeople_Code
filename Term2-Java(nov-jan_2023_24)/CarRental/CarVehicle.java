@@ -5,8 +5,10 @@ package CarRental;
  * doors(): the numbeer of doors car model can have
  * fuelType(): either petrol, diesel, or electric
  */
-public interface CarVehicle {
-    void doors();
-    void fuelType();
+public interface CarVehicle extends Vehicle {
+    void setDoors(int doors);
+    void setFuelType(String type);
+    String getFuelType();
+    int getDoors();
     
 }
