@@ -2,6 +2,8 @@ package CarRental;
 
 /**
  * Motorcycle: implements Vehicle and MotorVehicle interface
+ * type: either sport, cruiser, or off-road
+ * year: it was made
  */
 public class Motorcycle implements MotorVehicle {
     String make;
@@ -17,7 +19,7 @@ public class Motorcycle implements MotorVehicle {
         this.year = _year;
     }
 
-    // setter
+    // setter / for updating
     //implementing model for Vehicle interface
     public void setNumbersOfWheels(int wheels){
         this.numbersOfWheels = wheels;
@@ -46,6 +48,6 @@ public class Motorcycle implements MotorVehicle {
     };
 
     public String getMotorcycleType(){
-            return this.type;
+        return this.type;
     };
 }

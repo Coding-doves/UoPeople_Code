@@ -11,6 +11,4 @@ public interface Vehicle {
     String getVehicleModel();
     int getManufacturedYear();
 }
-   
-
-
+ 

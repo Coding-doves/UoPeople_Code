@@ -1,6 +1,5 @@
 package CarRental;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -8,117 +7,193 @@ import java.util.Scanner;
  */
 public class Main {
     public static Scanner scan = new Scanner(System.in);//get users input
+    static String make;
+    static String model;
+    static int year;
+
+
     public static void main(String[] args) {
-        boolean exit = false;
-        System.out.println("Enter related digit for vehicle you would like to rent.");
-        System.out.println("1 -> Car");
-        System.out.println("2 -> Motorcycle");
-        System.out.println("3 -> Truck");
-        System.out.println("0 -> exit");
+        try{
+            boolean exit = false;
+            System.out.println("Enter related digit for vehicle you would like to rent.");
+            System.out.println("1 -> Car");
+            System.out.println("2 -> Motorcycle");
+            System.out.println("3 -> Truck");
+            System.out.println("0 -> exit");
 
-        int opt = scan.nextInt();
-        scan.nextLine();
 
-        while (!exit) {
-            switch (opt) {
-                case 1:
-                    car();
-                    break;
+            while (!exit) {
+                int opt = scan.nextInt();
+                scan.nextLine();
 
-                case 2:
-                    motorcycle();
-                    break;
+                switch (opt) {
+                    case 1:
+                        car();
+                        break;
 
-                case 3:
-                    truck();
-                    break;
+                    case 2:
+                        motorcycle();
+                        break;
 
-                case 0:
-                    exit=true;
-                    scan.close();
-                    break;
+                    case 3:
+                        truck();
+                        break;
 
-                default:
-                    System.out.println("Not a valid input.");
-                    break;
+                    case 0:
+                        exit=true;
+                        System.out.println("\nExiting...");
+                        break;
+
+                    default:
+                        System.out.println("Not a valid input.");
+                        break;
+                }
             }
+            scan.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e);
         }
-        
-        Motorcycle motorcycle = new Motorcycle("Harley", "Davidson", 2021);
-        Truck truck = new Truck("Ford", "F-150", 2023);
 
-        motorcycle.numbersOfWheels = 2;
-        motorcycle.type = "sport";
-
-        truck.capacityInTons = 1200;
-        truck.transmissonType = "automatic";
-
-        System.out.println(motorcycle.make);
-        System.out.println(truck.capacityInTons);
     }
 
-    private static void motorcycle() {
+    
+    // method to implement motorcycle blueprint
+    public static void motorcycle() {
+        try {
+            System.out.println("\nMOTORCYCLE ORDER MENU");
+            System.out.println("1 -> Place order");
+            System.out.println("2 -> View order");
+            System.out.println("3 -> Update/edit order");
+            System.out.println("0 -> exit order");
+
+            boolean ext = false;
+            
+            while (!ext) {
+                int opt = scan.nextInt();
+                scan.nextLine();
+
+                switch (opt) {
+                    case 1:
+                        motorcycleClass.placeOrder();
+                        break;
+
+                    case 2:
+                        motorcycleClass.view();
+                        break;
+
+                    case 3:
+                        motorcycleClass.update();
+                        break;
+
+                    case 0:
+                        ext = true;
+                        System.out.println("\nExiting car menu...");
+                        main(null);
+                        break;
+
+                    default:
+                        System.out.println("Not a valid input.");
+                        break;
+                } 
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }  
     }
 
-    private static void truck() {
+
+    // method to implement truck blueprint
+    public static void truck() {
+        try{
+            System.out.println("\nTRUCK ORDER MENU");
+            System.out.println("1 -> Place order");
+            System.out.println("2 -> View order");
+            System.out.println("3 -> Update/edit order");
+            System.out.println("0 -> exit order");
+
+            boolean ext = false;
+            
+            while (!ext) {
+                int opt = scan.nextInt();
+                scan.nextLine();
+
+                switch (opt) {
+                    case 1:
+                        truckClass.placeOrder();
+                        break;
+
+                    case 2:
+                        truckClass.view();
+                        break;
+
+                    case 3:
+                        truckClass.update();
+                        break;
+
+                    case 0:
+                        ext = true;
+                        System.out.println("\nExiting truck menu...");
+                        main(null);
+                        break;
+
+                    default:
+                        System.out.println("Not a valid input.");
+                        break;
+                } 
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
     }
+
 
     // method to implement car blueprint
-    private static void car() {
-        ArrayList<Car> listOfCars = new ArrayList<>();// store input
-        String make;
-        String model;
-        int year;
-        int doors;
-        String fuel;
+    public static void car() {
+        try{
+            System.out.println("\nCAR ORDER MENU");
+            System.out.println("1 -> Place order");
+            System.out.println("2 -> View order");
+            System.out.println("3 -> Update/edit order");
+            System.out.println("0 -> exit order");
 
-        make = getStringInput("What is the MAKE of the car: ", scan);// get make of car
-        // if value is not given, loops till vaule is provided                
-        make = ifEmpty(make);
+            boolean ext = false;
+            
+            while (!ext) {
+                int opt = scan.nextInt();
+                scan.nextLine();
 
+                switch (opt) {
+                    case 1:
+                        CarClass.placeOrder();
+                        break;
 
-        model = getStringInput("What is the MODEL of the car: ", scan);// get model of car
-        // if value is not given, loops till vaule is provided                
-        model = ifEmpty(model);
+                    case 2:
+                        CarClass.view();
+                        break;
 
+                    case 3:
+                        CarClass.update();
+                        break;
 
-        fuel = getStringInput("FUEL type: ", scan);// get make of car
-        // if value is not given, loops till vaule is provided                
-        fuel = ifEmpty(fuel);
+                    case 0:
+                        ext = true;
+                        System.out.println("\nExiting car menu...");
+                        main(null);
+                        break;
 
-
-        year = getIntInput("What is the YEAR of the car: ", scan);// year car was made
-        // if value is not given, loops till vaule is provided
-        year = ifEmpty(year);
-        // the first car is presumed to have been made in 1886;, so year should be greater than 1800
-        while (year <= 1800) {
-            year = getIntInput("Enter a year greater than 1800: ", scan);
-        }
-
-
-        doors = getIntInput("How many DOORS should the car have: ", scan);// get make of car
-        // if value is not given, loops till vaule is provided                
-        doors = ifEmpty(doors);
-
-        scan.nextLine();//consume new line
-
-
-        Car car = new Car(make, model, year);
-
-        car.numberOfDoors = doors;
-        car.fuelType = fuel;
-        
-        listOfCars.add(car);
-        for (Car obj : listOfCars) {
-            System.out.println("Car make: " + obj.getVehicleMake());
-            System.out.println("Car model: " + obj.getVehicleModel());
-            System.out.print("Has " + obj.getDoors() + " doors and ");
-            System.out.print("runs on " + obj.getFuelType() + ".\n\n");
-        }
+                    default:
+                        System.out.println("Not a valid input.");
+                        break;
+                } 
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }    
     }
 
+    
     // handle exception and get String input
-    private static String getStringInput(String prompt, Scanner scan){
+    public static String getStringInput(String prompt, Scanner scan){
         String value;
 
         while (true) {
@@ -135,7 +210,7 @@ public class Main {
     }
 
     // handle exception and get integer input
-    private static int getIntInput(String prompt, Scanner scan){
+    public static int getIntInput(String prompt, Scanner scan){
         int value = 0;
 
         while (true) {
@@ -151,22 +226,13 @@ public class Main {
         return value;
     }
 
+    
     // loops till value is provided; String
-    private static String ifEmpty(String value){
+    public static String ifEmpty(String value){
         // if value is not given, loops till vaule is provided                
         while (value.isEmpty()) {
             value = getStringInput("Enter a value: ", scan);
         }
         return value;
     }
-
-    // loops till value is provided; int
-    private static int ifEmpty(int value){
-        // if value is not given, loops till vaule is provided                
-        while (value == 0) {
-            value = getIntInput("Enter a value: ", scan);
-        }
-        return value;
-    }
-    
 }

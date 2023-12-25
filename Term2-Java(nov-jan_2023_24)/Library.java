@@ -181,14 +181,17 @@ class Book
     public void addQuantity(int quantity){
         this.qty += quantity;
     }
+
     //reduce quantity
     public void subQuantity(int quantity){
         this.qty -= quantity;
     }
+
     //return book title
     public String returnTitle() {
         return this.title;
     }
+    
     //return quantity of a book 
     public int returnQty() {
         return this.qty;
