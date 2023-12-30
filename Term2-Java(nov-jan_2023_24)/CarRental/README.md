@@ -1,6 +1,6 @@
 # CarRental Application
 
-Main Class:
+`Main Class`:
 The Main class serves as the entry point for the CarRental application. It provides a text-based user interface for ordering vehicles (Cars, Motorcycles, and Trucks). The class contains methods to handle the main menu options, including ordering, viewing, and updating vehicle orders.
 
 	Attributes:
@@ -28,7 +28,7 @@ The Vehicle interface defines a blueprint for objects representing vehicles in a
 Usage:
 The Vehicle interface can be implemented by different classes representing specific types of vehicles, such as cars, motorcycles, or trucks. By implementing this interface, a class is obligated to provide concrete implementations for the methods defined in the interface.
 
-TruckVehicle Interface
+`TruckVehicle Interface`
 The `TruckVehicle` interface defines a contract for objects that represent trucks within the CarRental application. It extends the `Vehicle` interface, inheriting its features and adding specific functionality related to trucks.
 
 •	Methods:
