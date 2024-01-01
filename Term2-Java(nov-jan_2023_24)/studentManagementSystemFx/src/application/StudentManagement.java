@@ -1,7 +1,7 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -62,170 +62,89 @@ class StudentManagement {
 
 
     // update student information
-    public static void updateStudentInfo(){
+    public static String updateStudentInfo(int ID, String name, Integer age, Float grade){
         System.out.println("\nUPDATING STUDENTS' INFORMATION");
             
-        //enter student id
-        System.out.print("ID of the student you want to update: ");
-        int ID = scan.nextInt();
-        scan.nextLine();
-
         // confirm if student (id) exists in the list
         Student exist = checkID(ID);
 
         if (exist != null) {
-            boolean exit = false;
+        	// find what is to be updated
             try {
-                
-                while(!exit){
-                    // find what is to be updated
-                    System.out.println("\nEnter 1 - to update ID");
-                    System.out.println("Enter 2 - to update name");
-                    System.out.println("Enter 3 - to update age");
-                    System.out.println("Enter 4 - to update grade");
-                    System.out.println("Enter 0 - Back to menu");
-                    int option = scan.nextInt();
-                    scan.nextLine();
-
-                    switch(option){
-                        case 1:
-                            // update the id
-                            System.out.print("\nUpdate student ID: ");
-                            int up_id = scan.nextInt();
-                            updateID(exist, up_id);
-                            break;
-                        case 2:
-                            // update the name
-                            System.out.print("\nUpdate student name: ");
-                            String name = scan.nextLine();
-                            exist.setName(name);
-                            break;
-                        case 3:
-                            // set the age
-                            System.out.print("\nStudent age: ");
-                            int up_age = scan.nextInt();
-                            updateAge(exist, up_age);
-                            break;
-                        case 4:
-                            // set the grade
-                            System.out.print("\nStudent grade: ");
-                            float up_grade = scan.nextFloat();
-                            updateGrade(exist, up_grade);
-                            break;
-                        case 0:
-                            exit = true;
-                            System.out.println("Exiting...");
-                            break;
-                        default:
-                            System.out.println("NOT AN OPTION");
-                            break;
-                    }
-                    System.out.println("\nStudents' details successfully updated");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Error:Wrong input type");
-                scan.nextLine();
+            	         	
+            	// updating name
+            	if(name != null && !name.isEmpty()) {
+            		System.out.print("\nUpdate student name: ");
+                    exist.setName(name);
+            	}
+            	
+            	// updating age
+            	if(age != null) {
+            		if (age > 3) {
+	            		System.out.print("\nStudent age: ");
+	                    updateAge(exist, (int)age);
+            		} else {
+            			return "Student must be 4 and above";
+            		}
+            	}
+            	
+            	// updating grade
+            	if(grade != null) {
+            		if (grade >= 0) {
+	            		System.out.print("\nStudent grade: ");
+	                    updateGrade(exist, (float)grade);
+	            	}else {
+	            		return "Grade should be positive";
+	            	}
+            	}
+            	System.out.print("\nStudent grade: ");
+                 return "\nStudents' details successfully updated";
+                    
             } catch (Exception e) {
             	// TODO: handle exception
 	            if (ID != (int) ID){ // if id is not type integer
-	                System.out.println("ID " + ID + " should be digits.");
+	                return ("ID " + ID + " should be digits.");
 	            }else{
-		                System.out.println("Error: Something went wrong " + e);
+		             return ("Error: Something went wrong " + e);
 	            }
             }
-        }else{
-            System.out.println(ID + " does not exist\nExiting...");
         }
+        return (ID + " does not exist\n");
+       
     }
 
-    //update id - called in the update method
-    private static void updateID(Student student, int id){
-        if (id < 1){// if id is not positive
-            System.out.println("Must be positive digits");
-        }else if(checkID(id) != null){// if id already exist i.e belongs to another student
-            System.out.println(id + "already exist. Enter a unique Id");
-        }else{
-            student.setId(id);
-        }
-    }
 
     //update age - called in the update method
-    private static void updateAge(Student student, int age){
-        if (age < 1 && age != (int) age){// if age is not positive
-            System.out.println(age + "Must be positive digits");
-        }else{
-            student.setAge(age);
-        }
+    private static void updateAge(Student student,int age){
+        
+        student.setAge(age);
     }
 
     //update grade - called in the update method
     private static void updateGrade(Student student, float grade){
-        if (grade <= 0.0 && grade != (float) grade){// if grade is not positive
-            System.out.println(grade + "Must be positive digits");
-        }else{
-            student.setGrade(grade);
-        }
+      
+        student.setGrade(grade);
     }
 
-
     // view the student table
-    public static void viewStudentDetails(){
-        boolean ext = false;
-
+    public static List<Student> viewStudentDetails(){
+       
         System.out.println("\nVIEW STUDENTS' INFORMATION");
             
-        while(!ext){
-            // find what is to be updated
-            System.out.println("\nEnter 1 - to view a student record");
-            System.out.println("Enter all - to view the entire list");
-            System.out.println("Enter 0 - exit from VIEW\n");
-            String option = scan.nextLine();
+        List<Student> allStudents = new ArrayList<>();
 
-            switch(option){
-                case "1":
-                    // view by id
-                    System.out.print("Student ID: ");
-                    int ID = scan.nextInt();
-                    scan.nextLine();
-
-                    // confirm if student (id) exists in the list
-                    Student exist = checkID(ID);
-
-                    if (exist != null) {
-                        //list header
-                        System.out.printf("%-15s%-15s%-15s%-15s\n","ID", "Name", "Age", "Grade");
-                        System.out.println("--------------------------------------------");
-
-                        // list body
-                        System.out.printf("%-15d%-15s%-15d%-15.2f\n", exist.returnId(), exist.returnName(), exist.returnAge(), exist.returnGrade()); 
-                    }else{
-                        System.out.println("Student with ID " + ID + " does not exist\n");
-                    }                     
-                    break;
-                case "all":
-                    // view all
-                    //list header
-                    System.out.println("\nTotal Number of Students: " + StudentManagement.numberOfStudents);
-                    System.out.printf("%-15s%-15s%-15s%-15s\n","ID", "Name", "Age", "Grade");
-                    System.out.println("---------------");            
-
-                    // list body
-                    for (Student s : studentsList) {
-                        System.out.printf("%-15d%-15s%-15d%-15.2f\n", s.returnId(), s.returnName(), s.returnAge(), s.returnGrade()); 
-                    }
-                    break;
-                case "0":
-                    ext = true;
-                    System.out.println("Exiting...");
-                    break;
-                default:
-                    System.out.println("NOT AN OPTION");
-                    break;
-            }
+        // Display details for all students
+        for (Student s : studentsList) {
+            // Add each student to the list
+            allStudents.add(s);
         }
+
+        return allStudents;
+
     }
 
     // check if id already exist
+    
     private static Student checkID(int id){
         for (Student stu_id : studentsList) {
             if (stu_id.returnId() == id){
