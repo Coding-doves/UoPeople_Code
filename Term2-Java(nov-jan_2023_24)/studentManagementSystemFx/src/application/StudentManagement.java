@@ -12,20 +12,18 @@ class StudentManagement {
 
     // Array to store students
     private static ArrayList<Student> studentsList = new ArrayList<>();
-    private static int numberOfStudents = 0;
-
+    public static int numberOfStudents = 0;
+    
+   
     // adding new student
-    public static void newStudent(){
+    public static void newStudent(int ID, String name, int age, float grade){
         System.out.println("\nADDING NEW STUDENT\n");
-
+       
         try{
             //enter student id
-            System.out.print("Student ID: ");
-            int ID = scan.nextInt();
             if(ID < 1){
                 throw new NonNegativeNumber("ID should be positive digit.");
             }
-            scan.nextLine();
 
             // confirm if student id already existing
             Student exist = checkID(ID);
@@ -38,25 +36,15 @@ class StudentManagement {
             } else {
                 numberOfStudents++;
 
-                // get the name
-                System.out.print("Student name: ");
-                String name = scan.nextLine();
-
                 // get the age
-                System.out.print("Student age: ");
-                int age = scan.nextInt();
                 if(age < 1){
                     throw new NonNegativeNumber("Age should be a positive digit.");
                 }
-                scan.nextLine();
 
-                // get the grade
-                System.out.print("Student grade: ");
-                float grade = scan.nextFloat();
+                // get the grade                
                 if(grade < 0.0){
                     throw new NonNegativeNumber("Grade should be positive. E.g 4.0");
                 }
-                scan.nextLine();
 
                 // create new instance of student
                 Student new_stu = new Student(name, ID, age, grade);
@@ -65,9 +53,6 @@ class StudentManagement {
             }
         } catch(NonNegativeNumber e){
             System.out.println(e.getMessage());
-            scan.nextLine();
-        } catch(InputMismatchException e){
-            System.out.println("Error:Wrong input:\n" + e);
             scan.nextLine();
         } catch(Exception e){
                 System.out.println("Error:Something broke " + e);
