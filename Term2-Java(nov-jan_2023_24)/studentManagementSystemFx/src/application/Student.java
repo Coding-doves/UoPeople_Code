@@ -39,7 +39,7 @@ class Student{
     }
 
     // return id demanded
-    public Integer returnId(){
+    public int returnId(){
         return this.ID;
     }
 
@@ -49,12 +49,12 @@ class Student{
     }
 
     // return age demanded
-    public Integer returnAge(){
+    public int returnAge(){
         return this.age;
     }
 
     // return grade demanded
-    public Float returnGrade(){
+    public float returnGrade(){
         return this.grade;
     }
 }

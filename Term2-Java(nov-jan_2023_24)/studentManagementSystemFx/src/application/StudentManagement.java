@@ -20,11 +20,6 @@ class StudentManagement {
         System.out.println("\nADDING NEW STUDENT\n");
        
         try{
-            //enter student id
-            if(ID < 1){
-                throw new NonNegativeNumber("ID should be positive digit.");
-            }
-
             // confirm if student id already existing
             Student exist = checkID(ID);
 
@@ -36,14 +31,9 @@ class StudentManagement {
             } else {
                 numberOfStudents++;
 
-                // get the age
-                if(age < 1){
-                    throw new NonNegativeNumber("Age should be a positive digit.");
-                }
-
                 // get the grade                
                 if(grade < 0.0){
-                    throw new NonNegativeNumber("Grade should be positive. E.g 4.0");
+                    throw new Exception("Grade should be positive. E.g 4.0");
                 }
 
                 // create new instance of student
@@ -51,9 +41,7 @@ class StudentManagement {
                 studentsList.add(new_stu);
                 System.out.println(numberOfStudents + " New student details has been added");
             }
-        } catch(NonNegativeNumber e){
-            System.out.println(e.getMessage());
-            scan.nextLine();
+        
         } catch(Exception e){
                 System.out.println("Error:Something broke " + e);
                 scan.nextLine();
@@ -101,7 +89,6 @@ class StudentManagement {
                  return "\nStudents' details successfully updated";
                     
             } catch (Exception e) {
-            	// TODO: handle exception
 	            if (ID != (int) ID){ // if id is not type integer
 	                return ("ID " + ID + " should be digits.");
 	            }else{

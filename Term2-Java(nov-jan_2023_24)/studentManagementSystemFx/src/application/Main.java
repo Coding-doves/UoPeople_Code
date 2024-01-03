@@ -2,17 +2,11 @@ package application;
 	
 import javafx.geometry.Insets;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.util.List;
-
-import application.StudentManagement;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -106,9 +100,9 @@ public class Main extends Application {
 		return null;
 	}
 	
+	
 	//Starts -> Add, update, view students
 	
-
 	private void viewStudentDetailsForm(Stage primaryStage) {
 	    formLabel = new Label("VIEW STUDENT DETAILS");
 	
