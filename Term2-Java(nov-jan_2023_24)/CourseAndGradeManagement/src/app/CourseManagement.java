@@ -1,7 +1,6 @@
 package app;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CourseManagement {
     private static ArrayList<Courses> listOfCourses=new ArrayList<>();
