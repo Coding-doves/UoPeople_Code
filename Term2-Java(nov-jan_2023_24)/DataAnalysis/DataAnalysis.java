@@ -3,11 +3,8 @@ package DataAnalysis;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class DataAnalysis{
-    private static Scanner scan = new Scanner(System.in);// to get users input
-
     public static void main(String[] args){
         //an array of integers representing the daily stock prices of a company for a given period
         float[] stockPrice = 
